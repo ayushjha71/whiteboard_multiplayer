@@ -1,4 +1,3 @@
-#Multiplayer Whiteboard 
 Multiplayer Whiteboard System (Unity + Photon Fusion)
 
 A real-time, cross-platform multiplayer whiteboard built with Unity and Photon Fusion. This system enables multiple users to draw collaboratively across Android, WebGL, and PC platforms with synchronized input and smooth performance.
