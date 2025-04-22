@@ -1,39 +1,39 @@
 Multiplayer Whiteboard System (Unity + Photon Fusion)
 
-A real-time, cross-platform multiplayer whiteboard built with Unity and Photon Fusion. This system enables multiple users to draw collaboratively across Android, WebGL, and PC platforms with synchronized input and smooth performance.
+Multiplayer Whiteboard System project, I chose to implement Photon Fusion (Shared Mode) as the networking solution within the Unity engine. This setup offers a reliable, scalable, and easy-to-integrate approach for building a real-time collaborative drawing experience across multiple platforms, including Android, WebGL, and PC.
 
-🚀 Overview
+🎯 Why Photon Fusion (Shared Mode)?
 
-This project provides an interactive whiteboard experience designed for:
+Cross-Platform Multiplayer
 
-Remote collaboration
+Photon Fusion supports seamless multiplayer interaction across mobile, browser, and desktop devices. With a single codebase, users on different platforms can draw and collaborate in real time.
 
-Online classrooms
+Shared Simulation Mode
 
-Multiplayer brainstorming
+The whiteboard uses Fusion’s Shared Mode, where one client acts as the host and others synchronize with the host's state. This is ideal for lightweight applications like whiteboards, where real-time accuracy and simplicity matter more than full server authority.
 
-Virtual meeting tools
+Real-Time State Synchronization
 
-In-game drawing boards for metaverse apps
+Using Fusion’s built-in NetworkTransform and RPCs, the system synchronizes drawing strokes frame-by-frame. This ensures smooth and consistent rendering of lines across all devices.
 
-Late joiners can view the full drawing history, and drawing actions are synchronized across all connected devices using Photon Fusion's Shared Mode.
+Late Join Support
 
-🛠️ Tech Stack
+When a new player joins the session, they automatically receive the current state of the whiteboard, including all previous drawings. This is handled using Networked Lists and replayable commands for a consistent user experience.
 
-Unity – Real-time development platform
+Minimal Latency
 
-Photon Fusion (Shared Mode) – High-performance multiplayer networking
+Photon Fusion is optimized for low-latency updates, which is essential for drawing interactions that rely on precision and timing.
 
-C# – Scripting and logic implementation
+🔧 Technical Implementation Highlights
 
-WebGL / Android / PC – Fully compatible and tested across all platforms
+Drawing Synchronization: Real-time updates via RPCs and shared input handling
 
-💡 Key Features
+Late Join Handling: Networked state replay for new players to see existing drawings
 
-Realtime synchronized drawing across clients
+Cross-Platform Build: Optimized for Android touch input, WebGL browser support, and PC mouse input
 
-Cross-platform support (Android, WebGL, PC)
+Photon Fusion Integration: Reliable state sync with simple architecture
 
-Persistent drawing state for new users
+Session Management: Host-based session with auto join/leave detection
 
-Easy-to-customize and extend for educational or creative use
+This system can be extended for use in virtual classrooms, online collaboration tools, metaverse creative hubs, or game UI sketches, making it a flexible foundation for a variety of multiplayer experiences.
