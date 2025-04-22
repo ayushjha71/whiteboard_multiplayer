@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &255849239544134368
 Transform:
   m_ObjectHideFlags: 0
@@ -259,6 +259,7 @@ Transform:
   m_Children:
   - {fileID: 2624648658873997212}
   - {fileID: 255849239544134368}
+  - {fileID: 4575748016250190011}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &4577353899128986697
@@ -301,7 +302,8 @@ MonoBehaviour:
   SortKey: 529308245
   ObjectInterest: 1
   Flags: 262145
-  NestedObjects: []
+  NestedObjects:
+  - {fileID: 7957348634514702935}
   NetworkedBehaviours:
   - {fileID: -7641661826809126133}
   - {fileID: 2648587950999315800}
@@ -362,3 +364,80 @@ MonoBehaviour:
   maxVerticalAngle: 90
   invertY: 1
   playerInput: {fileID: 2648587950999315800}
+--- !u!1001 &886995924612744194
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4603472810724049931}
+    m_Modifications:
+    - target: {fileID: 3733321964019350713, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 122.422585
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733321964019350713, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -67.79292
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733321964019350713, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -31.707233
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733321964019350713, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733321964019350713, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733321964019350713, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733321964019350713, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733321964019350713, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733321964019350713, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3733321964019350713, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6362897814895028976, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+      propertyPath: m_Name
+      value: Marker
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070950981725537877, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+      propertyPath: SortKey
+      value: 2678481277
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+--- !u!4 &4575748016250190011 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3733321964019350713, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+  m_PrefabInstance: {fileID: 886995924612744194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7957348634514702935 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7070950981725537877, guid: c8c88caa06c9cb349bcc957dfd853fe7, type: 3}
+  m_PrefabInstance: {fileID: 886995924612744194}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

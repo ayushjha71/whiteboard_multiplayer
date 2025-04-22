@@ -45,11 +45,13 @@ namespace FPS_Multiplayer.Handler
         [Space]
         [SerializeField]
         private PlayerInputHandler playerInput;
-        
+
+        private bool isWhiteboardDetected = false;
 
         // player
         private float _speed;
         private float verticalRotation = 0f;
+        private float horizontalRotation = 0f;
         private float _verticalVelocity;
         private float _terminalVelocity = 53.0f;
 
@@ -62,13 +64,11 @@ namespace FPS_Multiplayer.Handler
         public override void Spawned()
         {
             _controller = GetComponent<CharacterController>();
-
+            cameraTransform = Camera.main.gameObject.transform;
             // reset our timeouts on start
             _jumpTimeoutDelta = JumpTimeout;
             _fallTimeoutDelta = FallTimeout;
         }
-
-
 
         public override void FixedUpdateNetwork()
         {
@@ -76,6 +76,22 @@ namespace FPS_Multiplayer.Handler
             GroundedCheck();
             Move();
             HandleCameraRotation();
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.gameObject.CompareTag("Whiteboard"))
+            {
+                isWhiteboardDetected = true;
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.CompareTag("Whiteboard"))
+            {
+                isWhiteboardDetected = false;
+            }
         }
 
         private void GroundedCheck()
@@ -86,18 +102,28 @@ namespace FPS_Multiplayer.Handler
         private void HandleCameraRotation()
         {
             // Get input
-            Vector2 lookInput = playerInput.LookInput;
+            if (isWhiteboardDetected)
+            {
+                cameraTransform.position = new Vector3(-0.0199999996f, 3.17000008f, -8.01000023f);
+                cameraTransform.eulerAngles = new Vector3(0, -180, 0);
+            }
+            else
+            {
+                cameraTransform.position = new Vector3(this.transform.position.x, 2, this.transform.position.z);
+                Vector2 lookInput = playerInput.LookInput;
+                // Horizontal rotation (affects both player and camera)
+                horizontalRotation += lookInput.x * lookSensitivity;
+                this.transform.rotation = Quaternion.Euler(0f, horizontalRotation, 0f);
 
-            float horizontalRotation = lookInput.x * lookSensitivity;
-            transform.Rotate(Vector3.up * horizontalRotation);
+                // Vertical rotation (affects only camera)
+                float verticalInput = invertY ? -lookInput.y : lookInput.y;
+                verticalRotation += verticalInput * lookSensitivity;
+                verticalRotation = Mathf.Clamp(verticalRotation, minVerticalAngle, maxVerticalAngle);
 
-            // Vertical rotation - rotate only the camera (this object)
-            float verticalInput = invertY ? -lookInput.y : lookInput.y;
-            verticalRotation += verticalInput * lookSensitivity;
-            verticalRotation = Mathf.Clamp(verticalRotation, minVerticalAngle, maxVerticalAngle);
-
-            // Apply vertical rotation to camera (local rotation)
-            cameraTransform.transform.localEulerAngles = new Vector3(verticalRotation, 0f, 0f);
+                // Combine rotations for camera
+                cameraTransform.rotation = Quaternion.Euler(verticalRotation, horizontalRotation, 0f);
+            }
+            
         }
 
         private void Move()
@@ -188,13 +214,6 @@ namespace FPS_Multiplayer.Handler
             {
                 _verticalVelocity += Gravity * Runner.DeltaTime;
             }
-        }
-
-        private static float ClampAngle(float lfAngle, float lfMin, float lfMax)
-        {
-            if (lfAngle < -360f) lfAngle += 360f;
-            if (lfAngle > 360f) lfAngle -= 360f;
-            return Mathf.Clamp(lfAngle, lfMin, lfMax);
         }
     }
 }
